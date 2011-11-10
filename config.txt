@@ -1,0 +1,7 @@
+{
+    "database"  : "postgresql",
+    "production" : {
+        "dbname"    : "example_db",
+        "dbuser"    : "example_user"
+    }
+}
