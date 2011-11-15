@@ -19,12 +19,11 @@ class SqlFileFilter implements FilenameFilter {
     }
     
     def SqlFileFilter() {
-        this(null);
+        this(/\d+-(.*?).sql/);
     }
     
     public boolean accept(File f, String filename) {  
         return filename ==~ ext;
-//        return filename.endsWith(ext);
     }  
 } 
 

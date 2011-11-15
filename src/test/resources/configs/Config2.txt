@@ -1,0 +1,7 @@
+{
+    "database"  : "MySQL",
+    "production" : {
+        "dbname"    : "Tanyadb",
+        "dbuser"    : "Tanya"
+    }
+}

@@ -5,7 +5,6 @@
 
 package filelist
 
-import groovy.json.JsonSlurper;
 
 /**
  *
@@ -28,14 +27,7 @@ class GroovyFileList {
 //            def ar1 = [9,8,7,6];
 //            println ar1;
 //            println ar1.sort{a,b -> (a%2 + b%2)};
-            def File configFile = new File ("./config.txt");
-            def fileText = configFile.getText();
-            def slurper = new JsonSlurper();    
-            def result = slurper.parseText(fileText);
-            println ("config.txt:");
-            println (result.database);
-            println (result.production.dbname);
-            println (result.production.dbuser);
+            
         }
 }
 

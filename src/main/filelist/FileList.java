@@ -16,5 +16,9 @@ public class FileList {
     public static void main(String[] args) {
         GroovyFileList gfl = new GroovyFileList();
         gfl.run();
+        ConfigReader cr = new ConfigReader();
+        cr.parseConfig("./config.txt");
     }
+    
+    
 }

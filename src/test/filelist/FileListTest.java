@@ -39,6 +39,17 @@ public class FileListTest {
     /**
      * Test
      */
+//    @Test
+//    public void test1() {
+//        String expected = "Tanya";
+//        String result = "Vanya";
+//        
+//        assertEquals(expected.substring(1), result.substring(1));
+//    }
+    
+    /**
+     * Test
+     */
     @Test
     public void test2() {
         SqlFileFilter sff = new SqlFileFilter(null);
@@ -76,4 +87,43 @@ public class FileListTest {
         boolean exp = false;
         assertEquals(res, exp);
     }
+    
+    ConfigReader cf = new ConfigReader();
+    
+    /**
+     * Test
+     */
+    @Test
+    public void configTest1() {
+        Config res = cf.parseConfig("./src/test/resources/configs/config1.txt");
+        Config exp = new Config ("MySQL", "Vanyadb", "Vanya");
+        assertEquals(res.getDataBase(), exp.getDataBase());
+        assertEquals(res.getDbname(), exp.getDbname());
+        assertEquals(res.getDbuser(), exp.getDbuser());
+    }
+     /**
+     * Test
+     */
+    @Test
+    public void configTest2() {
+        Config res = cf.parseConfig("./src/test/resources/configs/config2.txt");
+        Config exp = new Config ("MySQL", "Tanyadb", "Tanya");
+        assertEquals(res.getDataBase(), exp.getDataBase());
+        assertEquals(res.getDbname(), exp.getDbname());
+        assertEquals(res.getDbuser(), exp.getDbuser());
+    }
+    
+   /**
+     * Test
+     */
+    @Test
+    public void configTest3() {
+        Config res = cf.parseConfig("./src/test/resources/configs/config3.txt");
+        Config exp = new Config ("postgresql", "smbddb", "smbd");
+        assertEquals(res.getDataBase(), exp.getDataBase());
+        assertEquals(res.getDbname(), exp.getDbname());
+        assertEquals(res.getDbuser(), exp.getDbuser());
+    }  
 }
+
+    
