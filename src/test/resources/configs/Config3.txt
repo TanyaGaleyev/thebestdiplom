@@ -1,7 +1,0 @@
-{
-    "database"  : "postgresql",
-    "production" : {
-        "dbname"    : "smbddb",
-        "dbuser"    : "smbd"
-    }
-}
