@@ -1,4 +1,4 @@
-package org.ivan.app;
+package org.tanya.app;
 
 /**
  * Hello world!
