@@ -1,0 +1,11 @@
+Result script
+--------------------------
+Script 1 (scr1.txt)
+Hello Tanya, glad to meet you!
+--------------------------
+Script 2 (scr2.txt)
+Hi Vanya
+--------------------------
+Script 3 (scr3.txt)
+Happy New Year!!!
+--------------------------

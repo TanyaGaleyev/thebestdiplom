@@ -1,0 +1,11 @@
+{
+    "command"  : "psql",
+    "mainargs" : "--single-transaction -d ${dbname} -U ${dbuser} -h ${host}",
+    "execsql"  : "-c \"${sql}\"",
+    "execfile" : "-f \"${filename}\"",
+
+    "sql"      : {
+        "get_version" : "select max(version) from scheme_version",
+        "set_version" : "insert into scheme_version(version) values (${version})"
+    }
+}
