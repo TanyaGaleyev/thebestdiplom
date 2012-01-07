@@ -1,2 +1,2 @@
-db-migrator-maven-plugin плагин, который выполняет скрипты из папки SQL
-db-migrator-example проект, использованный для проверки плагина 
+db-migrator-maven-plugin - плагин, который выполняет скрипты из папки SQL
+db-migrator-example - проект, использованный для проверки плагина 
