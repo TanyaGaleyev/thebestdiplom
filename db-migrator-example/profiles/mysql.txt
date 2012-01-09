@@ -1,0 +1,11 @@
+{
+    "command"  : "mysql",
+    "mainargs" : "-D ${dbname} -u ${dbuser} --password=adminadmin -h ${host}",
+    "execsql"  : "-e \"${sql}\"",
+    "execfile" : "-e  \"source ${filename}\"",
+
+    "sql"      : {
+        "get_version" : "select max(version) as v from scheme_version",
+        "set_version" : "insert into scheme_version(id, version) values (${version},${version})"
+    }
+}

@@ -21,7 +21,9 @@ class ProfileReader {
                 result.command,
                 result.mainargs,
                 result.execsql,
-                result.execfile);
+                result.execfile,
+                result.sql.get_version,
+                result.sql.set_version);
             return pfl;
         }
 }

@@ -1,6 +1,6 @@
-CREATE TABLE table1
+CREATE TABLE scheme_version
 (
   id numeric NOT NULL,
-  name text,
+  version numeric NOT NULL,
   CONSTRAINT table1_pkey PRIMARY KEY (id)
 );

@@ -13,21 +13,45 @@ class ScriptsRunner {
     def scriptsDir = "./sql";
     
     def void runScripts() {
-        GroovyFileListReader gflr = new GroovyFileListReader();
-        def fnList = gflr.readFileList(scriptsDir);
         ConfigReader cr = new ConfigReader();
         Config cfg = cr.parseConfig("./config.txt");
         ProfileReader pr = new ProfileReader();
-        Profile prf = pr.parseProfile("./profiles/postgresql.txt");
-//        def process0 = "psql -U postgres -d postgres -c \"SELECT * FROM pg_am\"".execute();
-//        println process0.text;
-        fnList.each() {
-            def runCommand = buildExecFile(cfg, prf, "${scriptsDir}/${it}");
-            println runCommand;
-            def process = runCommand.execute();
-            println process.in.text;
-            println process.err.text;
+        Profile prf = pr.parseProfile("./profiles/${cfg.database}.txt");
+        def getVersionCommand = buildExecSql(cfg, prf, prf.queryGetVersion);
+        println getVersionCommand;
+        def process0 = getVersionCommand.execute();
+        def version = -1;
+        List lines = process0.in.readLines();
+        if(lines.size() > 0) {
+            version = lines.get(1).toInteger();
         }
+
+        GroovyFileListReader gflr = new GroovyFileListReader();
+        def fnList = gflr.readFileList(scriptsDir);
+        def scrVersion = 0;
+
+        def nscrs = 0;
+        fnList.each() {
+            def matcher = it =~ /\d+/;
+            scrVersion = matcher[0].toInteger();
+            if(scrVersion > version) {
+                def runCommand = buildExecFile(cfg, prf, "${scriptsDir}/${it}");
+                println runCommand;
+                def process = runCommand.execute();
+                nscrs++;
+                println process.in.text;
+                println process.err.text;
+            }
+        }
+        if(scrVersion > version) {
+            def engine = new groovy.text.SimpleTemplateEngine();
+            def template = engine.createTemplate(prf.querySetVersion);
+            def querySetVersion = template.make('version':scrVersion).toString();
+            def setVersionCommand = buildExecSql(cfg, prf, querySetVersion);
+            setVersionCommand.execute();
+        }
+        println "${nscrs} scripts executed!!"
+        println "Db updated from ${version} to ${scrVersion}"
     }
     
     def buildExecSql(Config cfg, Profile prf, String sql) {

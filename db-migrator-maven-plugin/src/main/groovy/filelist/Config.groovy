@@ -10,13 +10,13 @@ package filelist
  * @author Администратор
  */
 class Config {
-	def String dataBase;
+        def String database;
         def String dbname;
         def String dbuser;
         def String host
         
         def Config(String db, String dbn, String dbu, String hst) {
-            dataBase = db;
+            database = db;
             dbname = dbn;
             dbuser = dbu;
             host = hst;
