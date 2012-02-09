@@ -1,1 +1,6 @@
-INSERT INTO table1 VALUES(1,'Tanya'),(2,'VANYA');
+ALTER TABLE table1 ADD COLUMN surname text;
+UPDATE table1 SET surname = 'Galeyeva' WHERE id = 1;
+UPDATE table1 SET surname = 'Pavlukhin' WHERE id = 2;
+INSERT INTO table1 VALUES
+(3,'Tanya','Kartashova'),
+(4,'Dima','Semenistik');
