@@ -1,8 +1,8 @@
 {
-    "database"  : "mysql",
+    "database"  : "postgresql",
     "production" : {
         "host"      : "localhost",
         "dbname"    : "first_db",
-        "dbuser"    : "root",
+        "dbuser"    : "postgres",
     }
 }
